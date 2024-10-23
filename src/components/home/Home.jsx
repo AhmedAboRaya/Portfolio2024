@@ -3,6 +3,7 @@ import Robot from "./Robot";
 import Navbar from "./Navbar";
 import Location from "../location/Location";
 import { TextRevealCardPreview } from "./TextRevealCardPreview";
+import './scrollButton.css'
 
 function Home() {
   const [fullstackText, setFullstackText] = useState("");

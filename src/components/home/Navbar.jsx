@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu visibility
+  const [isOpen, setIsOpen] = useState(false); 
   const navItem =
     "text-white text-md xl:text-2xl font-bold hover:text-[#220a3d] duration-500 tracking-wider xl:tracking-widest ";
 
