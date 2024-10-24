@@ -2,16 +2,40 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
-function Navbar( {showNavbar} ) {
-  const [isOpen, setIsOpen] = useState(false); 
-  const navItem =
-    "text-white text-md xl:text-2xl font-bold hover:text-[#220a3d] duration-500 tracking-wider xl:tracking-widest ";
-    
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showFixedNavbar, setShowFixedNavbar] = useState(false);
+
+  const navItem = "text-white text-md xl:text-2xl font-bold hover:text-[#a163e9] duration-500 tracking-wider xl:tracking-widest";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowFixedNavbar(true);
+      } else {
+        setShowFixedNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
   return (
     <>
+      {/* Fixed Navbar after scroll */}
+      <div
+        className={`fixed top-0 left-0 w-full z-50 bg-[#220a3d57] bg-opacity-80 transition-transform duration-500 ${
+          showFixedNavbar ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+<>
       {/* Mobile Navbar */}
-      <ul className={`${showNavbar? "fixed translate-y-0 bg-[#220a3d5e]" : "-translate-y-full "} md:hidden p-2 flex justify-between w-full px-6`}>
+      <ul className="md:hidden p-2 flex justify-between w-full px-6">
         <li className="w-14">
           <Link to="/">
             <img src="/logo.png" alt="Logo" />
@@ -24,14 +48,14 @@ function Navbar( {showNavbar} ) {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-gray-800 bg-opacity-80 transition-transform transform z-10 ${
+        className={`fixed inset-0 bg-[#220a3da9] bg-opacity-80 h-screen transition-transform transform z-10 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } duration-300 md:hidden`}
       >
         <ul className="flex flex-col items-center justify-center h-full">
           <li className="py-4">
             <Link
-              className={`${navItem}`}
+              className={`${navItem } `}
               to="/"
               onClick={() => setIsOpen(false)}
             >
@@ -93,7 +117,7 @@ function Navbar( {showNavbar} ) {
       </div>
 
       {/* Computer Navbar */}
-      <ul className={` ${showNavbar? "fixed translate-y-0 bg-[#220a3d5e]" : "-translate-y-full block "} pb-4 w-full text-center justify-center z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
+      <ul className={`w-full pb-4  text-center justify-center z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
         <li className="w-0"></li>
         <li className="m-0">
           <Link className={`${navItem} m-0`} to="/">
@@ -132,6 +156,8 @@ function Navbar( {showNavbar} ) {
           </Link>
         </li>
       </ul>
+    </>
+        </div>
     </>
   );
 }

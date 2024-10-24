@@ -83,7 +83,7 @@ function Home() {
       <div className="mask"></div>
       <div className={`absolute top-0 left-0 text-white w-full flex md:justify-center`}>
         <NavbarComp />
-        {showNavbar && <Navbar showNavbar={showNavbar}/>}
+        {showNavbar && <Navbar />}
       </div>
       <div className="absolute bottom-40 w-full flex justify-center items-center text-center">
         <div className="w-full flex flex-col justify-center text-home">
