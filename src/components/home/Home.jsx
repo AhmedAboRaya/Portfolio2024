@@ -7,6 +7,7 @@ import './scrollButton.css'
 
 function Home() {
   const [fullstackText, setFullstackText] = useState("");
+  const [showNavbar, setShowNavbar] = useState(false);
   const targetText = "FULLSTACK DEVELOPER";
   const typingSpeed = 200; 
 
@@ -47,16 +48,39 @@ function Home() {
     requestAnimationFrame(animateScroll);
   };
 
+
+  useEffect(() => {
+    // Function to show the navbar when scrolled down
+    const handleScroll = () => {
+      if (window.scrollY > 300) { // Show the navbar after scrolling down 300px
+        setShowNavbar(true);
+      } else {
+        setShowNavbar(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleScroll = () => {
-    scrollToPosition(736, 2000); 
+    scrollToPosition(920, 2000); 
+    // scrollToPosition(736, 2000); 
   };
 
+
+
   return (
-    <div className="App relative w-full h-screen">
+    <div className="App relative w-full h-screen z-10">
       <Robot />
       <div className="mask"></div>
-      <div className="absolute top-0 left-0 text-white w-full flex md:justify-center">
-        <Navbar />
+      <div className={`${showNavbar ? "bg-black" : ""} absolute top-0 left-0 text-white w-full flex md:justify-center`}>
+        <Navbar showNavbar={showNavbar}/>
       </div>
       <div className="absolute bottom-40 w-full flex justify-center items-center text-center">
         <div className="w-full flex flex-col justify-center text-home">

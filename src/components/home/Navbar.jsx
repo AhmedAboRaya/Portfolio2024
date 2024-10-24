@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
-function Navbar() {
+function Navbar( {showNavbar} ) {
   const [isOpen, setIsOpen] = useState(false); 
   const navItem =
     "text-white text-md xl:text-2xl font-bold hover:text-[#220a3d] duration-500 tracking-wider xl:tracking-widest ";
+    
 
   return (
     <>
@@ -92,7 +93,7 @@ function Navbar() {
       </div>
 
       {/* Computer Navbar */}
-      <ul className="fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex">
+      <ul className={` ${showNavbar? "fixed translate-y-0" : "-translate-y-full block"} z-50 fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
         <li className="w-0"></li>
         <li className="m-0">
           <Link className={`${navItem} m-0`} to="/">

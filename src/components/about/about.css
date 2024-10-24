@@ -1,7 +1,66 @@
 
-.circle{
-    background-image: url('../../../public/circleAbout.png');
+
+
+  .download-cv {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden; 
+    cursor: pointer;
+    transition-duration: 1s;
+  }
+  .download-cv:hover span{
+    color: white;
+  }
+  
+  .download-cv::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-}
+    background-image: url('../../../public/circleAbout.png'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1; 
+    animation: rotate-bg 5s linear infinite; 
+  }
+
+  .download-cv::after{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    background-color: #220a3d; 
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1; 
+    transition-duration: 1s;
+  }
+
+  .download-cv:hover::after{
+    width: 66%;
+    height: 66%;
+  }
+  
+  @keyframes rotate-bg {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  #particles{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 55%;
+    z-index: 1;
+  }
