@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Robot from "./Robot";
 import Navbar from "./Navbar";
+import NavbarComp from "../navbar/NavberComp";
 import Location from "../location/Location";
 import { TextRevealCardPreview } from "./TextRevealCardPreview";
 import './scrollButton.css'
@@ -77,10 +78,12 @@ function Home() {
 
   return (
     <div className="App relative w-full h-screen z-10">
+      
       <Robot />
       <div className="mask"></div>
-      <div className={`${showNavbar ? "bg-black" : ""} absolute top-0 left-0 text-white w-full flex md:justify-center`}>
-        <Navbar showNavbar={showNavbar}/>
+      <div className={`absolute top-0 left-0 text-white w-full flex md:justify-center`}>
+        <NavbarComp />
+        {showNavbar && <Navbar showNavbar={showNavbar}/>}
       </div>
       <div className="absolute bottom-40 w-full flex justify-center items-center text-center">
         <div className="w-full flex flex-col justify-center text-home">

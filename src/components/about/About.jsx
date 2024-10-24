@@ -13,7 +13,7 @@ const About = () => {
   return (
     <div className="relative">
       <ParticlesComponent id="particles" />
-      <section className="relative h-screen bg-[#2C2D4F] text-white flex items-center  flex-row justify-center md:justify-between p-10 lg:p-28 xl:p-36 2xl:px-44 flex-wrap">
+      <section className="relative h-screen bg-[#2C2D4F] text-white flex items-center  flex-row justify-center md:justify-between p-10 xl:p-36 2xl:px-44 flex-wrap">
         <div className="max-w-2xl space-y-4 p-8">
           <h1 className="font-bold text-xl">ABOUT</h1>
           <p className="text-sm md:text-md xl:text-lg leading-10 text-justify text-white">

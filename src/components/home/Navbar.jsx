@@ -11,7 +11,7 @@ function Navbar( {showNavbar} ) {
   return (
     <>
       {/* Mobile Navbar */}
-      <ul className="md:hidden mt-4 flex justify-between w-full px-6">
+      <ul className={`${showNavbar? "fixed translate-y-0 bg-[#220a3d5e]" : "-translate-y-full "} md:hidden p-2 flex justify-between w-full px-6`}>
         <li className="w-14">
           <Link to="/">
             <img src="/logo.png" alt="Logo" />
@@ -93,7 +93,7 @@ function Navbar( {showNavbar} ) {
       </div>
 
       {/* Computer Navbar */}
-      <ul className={` ${showNavbar? "fixed translate-y-0" : "-translate-y-full block"} z-50 fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
+      <ul className={` ${showNavbar? "fixed translate-y-0 bg-[#220a3d5e]" : "-translate-y-full block "} pb-4 w-full text-center justify-center z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
         <li className="w-0"></li>
         <li className="m-0">
           <Link className={`${navItem} m-0`} to="/">
