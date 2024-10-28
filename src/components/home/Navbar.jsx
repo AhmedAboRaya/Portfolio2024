@@ -6,7 +6,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showFixedNavbar, setShowFixedNavbar] = useState(false);
 
-  const navItem = "text-white text-md xl:text-2xl font-bold hover:text-[#a163e9] duration-500 tracking-wider xl:tracking-widest";
+  const navItem = "text-white text-md xl:text-lg font-bold hover:text-[#a163e9] duration-500 tracking-wider xl:tracking-widest";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +117,7 @@ function Navbar() {
       </div>
 
       {/* Computer Navbar */}
-      <ul className={`w-full pb-4  text-center justify-center z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
+      <ul className={`w-full pb-4 text-center justify-center z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
         <li className="w-0"></li>
         <li className="m-0">
           <Link className={`${navItem} m-0`} to="/">
