@@ -10,14 +10,14 @@ export default function ThreeDCardDemo({key, title, description, link, img}) {
       >
         <CardItem
           translateZ="50"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
+          className="text-xl font-bold text-white"
         >
           {title}
         </CardItem>
         <CardItem
           as="p"
           translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          className="text-sm max-w-sm mt-2 text-white"
         >
           {description}
         </CardItem>
@@ -36,7 +36,7 @@ export default function ThreeDCardDemo({key, title, description, link, img}) {
             as="a"
             href={link}
             target="_blank" 
-            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+            className="px-4 py-2 rounded-xl text-xs font-normal text-white"
           >
             Try now →
           </CardItem>
@@ -44,7 +44,7 @@ export default function ThreeDCardDemo({key, title, description, link, img}) {
             translateZ={20}
             as="button"
             href={link}
-            className=" rounded-2xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+            className=" rounded-2xl bg-white text-black text-xs font-bold"
           >
             <a target="_blank" href={link} className="w-full h-full px-4 py-2 flex justify-center items-center gap-1">
               Code <Github />
