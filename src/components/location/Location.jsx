@@ -48,9 +48,9 @@ function Location() {
           setTargetText("About");
         }
       } else if (position >=  1440 && position < 1860) {
-        if (targetText !== "Education") {
+        if (targetText !== "Projects") {
           setDeleting(true); 
-          setTargetText("Education");
+          setTargetText("Projects");
         }
       }
     };

@@ -1,11 +1,12 @@
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
+import { Github } from 'lucide-react';
 
-export default function ThreeDCardDemo({key, title, description, link}) {
+export default function ThreeDCardDemo({key, title, description, link, img}) {
   return (
     <CardContainer className="inter-var">
       <CardBody
-        className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border"
+        className=" relative group/card dark:hover:shadow-2xl dark:hover:shadow-black/[0.3] bg-[#10112fcf] dark:border-white/[0.2] border-black/[0.1] md:min-w-[480px] h-auto rounded-xl p-6 border"
       >
         <CardItem
           translateZ="50"
@@ -22,7 +23,7 @@ export default function ThreeDCardDemo({key, title, description, link}) {
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
           <img
-            src="./logo.png" // Ensure the path is correct
+            src={img}
             height={1000}
             width={1000}
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
@@ -42,9 +43,12 @@ export default function ThreeDCardDemo({key, title, description, link}) {
           <CardItem
             translateZ={20}
             as="button"
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+            href={link}
+            className=" rounded-2xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
           >
-            Sign up
+            <a target="_blank" href={link} className="w-full h-full px-4 py-2 flex justify-center items-center gap-1">
+              Code <Github />
+            </a>
           </CardItem>
         </div>
       </CardBody>
