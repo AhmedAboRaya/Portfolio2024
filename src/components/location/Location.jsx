@@ -37,20 +37,20 @@ function Location() {
     const handleScroll = () => {
       const position = window.scrollY;
 
-      if (position < 400) {
+      if (position < 620) {
         if (targetText !== "Home") {
           setDeleting(true); 
           setTargetText("Home");
         }
-      } else if (position >= 400 && position < 1500) {
+      } else if (position >= 620 && position < 1440) {
         if (targetText !== "About") {
           setDeleting(true);
           setTargetText("About");
         }
-      } else if (position >=  1500) {
-        if (targetText !== "Projects") {
+      } else if (position >=  1440 && position < 1860) {
+        if (targetText !== "Education") {
           setDeleting(true); 
-          setTargetText("Projects");
+          setTargetText("Education");
         }
       }
     };

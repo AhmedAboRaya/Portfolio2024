@@ -8,7 +8,7 @@ const Education = () => {
   const [activeSection, setActiveSection] = useState('educationDetails');
 
   return (
-    <div className="flex justify-center flex-col md:flex-row items-center h-screen bg-[#2C2D4F] text-white p-4 rounded-lg shadow-lg">
+    <div className="flex justify-center flex-col md:flex-row items-center h-screen bg-[#2C2D4F] text-white p-4 ">
       {/* Navigation for Desktop and Tabs for Mobile */}
       <nav className="w-full md:w-1/4 bg-[#1f1f3a70] p-6 flex flex-col md:rounded-lg shadow-lg md:mr-6">
         <h2 className="text-2xl font-bold mb-6 hidden md:block">Navigation</h2>

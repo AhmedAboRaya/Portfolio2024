@@ -29,7 +29,7 @@ function Navbar() {
     <>
       {/* Fixed Navbar after scroll */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 bg-[#220a3d57] bg-opacity-80 transition-transform duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 bg-[#2C2D4F] border-b-[1px] border-[#ffffffa1] bg-opacity-80 transition-transform duration-500 ${
           showFixedNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
