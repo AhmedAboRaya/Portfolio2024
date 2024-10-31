@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
-function Navbar( {showNavbar} ) {
-  const [isOpen, setIsOpen] = useState(false); 
+function Navbar({ showNavbar }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItem =
     "text-white text-md xl:text-lg font-bold hover:text-[#55578b] duration-500 tracking-wider xl:tracking-widest ";
-    
 
   return (
     <>
@@ -31,108 +30,84 @@ function Navbar( {showNavbar} ) {
       >
         <ul className="flex flex-col items-center justify-center h-full">
           <li className="py-4">
-            <Link
+            <NavLink
               className={`${navItem}`}
               to="/"
               onClick={() => setIsOpen(false)}
             >
               HOME
-            </Link>
+            </NavLink>
           </li>
           <li className="py-4">
-            <Link
+            <NavLink
               className={`${navItem}`}
               to="/about"
               onClick={() => setIsOpen(false)}
             >
               ABOUT
-            </Link>
+            </NavLink>
           </li>
-          <li className="py-4">
-            <Link
-              className={`${navItem}`}
-              to="/education"
-              onClick={() => setIsOpen(false)}
-            >
-              EDUCATION
-            </Link>
-          </li>
-
           <li className="py-4 w-10 xl:w-14">
-            <Link to="/" onClick={() => setIsOpen(false)}>
+            <NavLink to="/" onClick={() => setIsOpen(false)}>
               <img src="/logo.png" alt="Logo" />
-            </Link>
+            </NavLink>
           </li>
           <li className="py-4">
-            <Link
-              className={`${navItem}`}
-              to="/skills"
-              onClick={() => setIsOpen(false)}
-            >
-              SKILLS
-            </Link>
-          </li>
-          <li className="py-4">
-            <Link
+            <NavLink
               className={`${navItem}`}
               to="/projects"
               onClick={() => setIsOpen(false)}
             >
               PROJECTS
-            </Link>
+            </NavLink>
           </li>
           <li className="py-4">
-            <Link
+            <NavLink
               className={`${navItem}`}
               to="/contact"
               onClick={() => setIsOpen(false)}
             >
               CONTACT
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
 
       {/* Computer Navbar */}
-      <ul className={`fade-in w-full pb-4  text-center justify-center z-50 fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}>
-        <li className="w-0"></li>
-        <li className="m-0">
-          <Link className={`${navItem} m-0`} to="/">
-            HOME
-          </Link>
-        </li>
-        <li>
-          <Link className={`${navItem}`} to="/about">
-            ABOUT
-          </Link>
-        </li>
-        <li>
-          <Link className={`${navItem}`} to="/education">
-            EDUCATION
-          </Link>
-        </li>
-        <li className="w-10 xl:w-14">
-          <Link to="/">
+      <div className="hidden md:flex flex-row items-center w-full justify-between px-5">
+        <div className="w-10 xl:w-14">
+          <NavLink to="/">
             <img src="/logo.png" alt="Logo" />
-          </Link>
-        </li>
-
-        <li>
-          <Link className={`${navItem}`} to="/skills">
-            SKILLS
-          </Link>
-        </li>
-        <li>
-          <Link className={`${navItem}`} to="/projects">
-            PROJECTS
-          </Link>
-        </li>
-        <li>
-          <Link className={`${navItem}`} to="/contact">
-            CONTACT
-          </Link>
-        </li>
-      </ul>
+          </NavLink>
+        </div>
+        <div>
+          <ul
+            className={`fade-in w-full pb-4  text-center px-5 pt-2 z-50 fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
+          >
+            <li></li>
+            <li className="mt-0">
+              <NavLink className={`${navItem} m-0`} to="/">
+                HOME
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={`${navItem}`} to="/about">
+                ABOUT
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={`${navItem}`} to="/projects">
+                PROJECTS
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={`${navItem}`} to="/contact">
+                CONTACT
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
