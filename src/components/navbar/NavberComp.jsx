@@ -6,7 +6,7 @@ function Navbar( {showNavbar} ) {
   const [isOpen, setIsOpen] = useState(false); 
 
   const navItem =
-    "text-white text-md xl:text-lg font-bold hover:text-[#a163e9] duration-500 tracking-wider xl:tracking-widest ";
+    "text-white text-md xl:text-lg font-bold hover:text-[#55578b] duration-500 tracking-wider xl:tracking-widest ";
     
 
   return (
@@ -25,7 +25,7 @@ function Navbar( {showNavbar} ) {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-[#220a3da9] bg-opacity-80 transition-transform transform z-10 ${
+        className={`fixed inset-0 bg-[#121329c7] bg-opacity-80 transition-transform transform z-10 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } duration-300 md:hidden`}
       >

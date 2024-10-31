@@ -81,24 +81,9 @@ export const TextRevealCard = ({ text, revealText, children, className }) => {
             transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
             className="absolute bg-[#3c0c63] z-20  will-change-transform"
           >
-            <p
-              style={{
-                textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
-              }}
-              className="text-base sm:text-[8rem] text-home py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300"
-            >
-              {revealText}
-            </p>
+
           </motion.div>
-          <motion.div
-            animate={{
-              left: `${widthPercentage}%`,
-              rotate: `${rotateDeg}deg`,
-              opacity: widthPercentage > 0 ? 1 : 0,
-            }}
-            transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-            className="h-28 w-[8px] bg-[#53107267]  absolute z-50 will-change-transform"
-          ></motion.div>
+
 
           <div className=" overflow-hidden flex justify-center w-full [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
             <p className="text-base sm:text-[8rem] text-home text-center text-white py-10 font-bold bg-clip-text text-transparent bg-[#53107267]">

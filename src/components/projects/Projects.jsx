@@ -1,50 +1,56 @@
-// Projects.js
 import React from "react";
-import Card from "./Card"
+import { motion } from "framer-motion";
+import Card from "./Card";
 
 const projects = [
     {
         title: "MedReserve",
-        description: "This is a description of project one.",
+        description: "Manage medical appointments and prescriptions.",
         link: "https://github.com/AhmedAboRaya/MedReserve.git",
         img: "/MedRev.png",
     },
     {
         title: "TaskTracker",
-        description: "This is a description of project two.",
+        description: "A tool for organizing tasks and managing projects.",
         link: "https://github.com/abdelrahman-elkhateeb/taskTrackr.git",
         img: "/taskTracker.png",
     },
     {
         title: "Shopping Website",
-        description: "This is a description of project two.",
+        description: "An e-commerce platform with a user dashboard.",
         link: "https://github.com/AhmedAboRaya/E-Commerce.git",
         img: "/Shopping.png",
     },
     {
-        title: "VS code clone",
-        description: "This is a description of project two.",
+        title: "VS Code Clone",
+        description: "A clone of Visual Studio Code for code editing.",
         link: "https://github.com/AhmedAboRaya/VS_Clone.git",
         img: "/vs_clone.png",
     },
 ];
 
+
 const Projects = () => {
     return (
-        <div className=" p-8 h-full w-full z-[2] relative">
+        <div className="p-8 px-20 min-h-screen w-full z-[2] relative" id="projects">
             <h1 className="text-4xl font-bold text-center text-white mb-8">My Projects</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 1510:grid-cols-3 gap-5">
-                {projects.map((project) => (
-                    <Card
+                {projects.map((project, index) => (
+                    <motion.div
                         key={project.title}
-                        title={project.title}
-                        description={project.description}
-                        link={project.link}
-                        img={project.img}
-                    />
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                    >
+                        <Card
+                            title={project.title}
+                            description={project.description}
+                            link={project.link}
+                            img={project.img}
+                        />
+                    </motion.div>
                 ))}
             </div>
-            
         </div>
     );
 };

@@ -47,10 +47,15 @@ function Location() {
           setDeleting(true);
           setTargetText("About");
         }
-      } else if (position >=  1440 && position < 1860) {
+      } else if (position >=  1440 && position < 2960) {
         if (targetText !== "Projects") {
           setDeleting(true); 
           setTargetText("Projects");
+        }
+      } else if (position >  2960 ) {
+        if (targetText !== "Contact Me") {
+          setDeleting(true); 
+          setTargetText("Contact Me");
         }
       }
     };
