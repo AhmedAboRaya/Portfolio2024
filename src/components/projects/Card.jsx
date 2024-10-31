@@ -1,10 +1,7 @@
-"use client";
-
-// import Image from "next/image"; // Import from "next/image"
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
-export default function ThreeDCardDemo() {
+export default function ThreeDCardDemo({key, title, description, link}) {
   return (
     <CardContainer className="inter-var">
       <CardBody
@@ -14,30 +11,30 @@ export default function ThreeDCardDemo() {
           translateZ="50"
           className="text-xl font-bold text-neutral-600 dark:text-white"
         >
-          Make things float in air
+          {title}
         </CardItem>
         <CardItem
           as="p"
           translateZ="60"
           className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
         >
-          Hover over this card to unleash the power of CSS perspective
+          {description}
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
-          {/* <Image
-            src="/logo.png" // Correct path if the image is in the public folder
+          <img
+            src="./logo.png" // Ensure the path is correct
             height={1000}
             width={1000}
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
-          /> */}
+          />
         </CardItem>
         <div className="flex justify-between items-center mt-20">
           <CardItem
             translateZ={20}
             as="a"
-            href="https://twitter.com/mannupaaji"
-            target="__blank"
+            href={link}
+            target="_blank" 
             className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
           >
             Try now →
