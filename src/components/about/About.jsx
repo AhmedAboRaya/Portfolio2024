@@ -1,6 +1,7 @@
 import "./about.css";
 import ParticlesComponent from "../particles/ParticlesComponent";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
   const handleDownload = () => {
@@ -10,29 +11,34 @@ const About = () => {
     link.click();
   };
 
+  const { ref, inView } = useInView({
+    threshold: 0.4, 
+    triggerOnce: true, 
+  });
+
   return (
     <div className="relative bg-[#2C2D4F] py-20 md:py-0" id="about">
       <ParticlesComponent id="particles" />
-      <section className="relative h-screen bg-[#2C2D4F] text-white flex items-center flex-row justify-center 1020:justify-between p-10 xl:p-36 2xl:px-44 flex-wrap">
+      <section  className="relative h-screen bg-[#2C2D4F] text-white flex items-center flex-row justify-center 1020:justify-between p-10 xl:p-36 2xl:px-44 flex-wrap">
         
-        <motion.div 
+        <motion.div ref={ref} 
           className="max-w-2xl space-y-4 p-8 z-10"
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 0.6 }}
         >
           <motion.h1 
             className="font-bold text-xl"
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={inView ?{ opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ delay: 0.7, duration: 0.7 }}
           >
             ABOUT
           </motion.h1>
           <motion.p 
-            className="text-sm 1020:text-md xl:text-lg leading-10 text-justify text-[#b6cded]"
+            className="text-sm 1020:text-md xl:text-lg leading-10 text-justify text-[#ffffff]"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={inView ?{ opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
           >
             I'm Ahmed, a Full-Stack Developer specializing in the MERN Stack. I
@@ -49,7 +55,7 @@ const About = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={inView ?{ opacity: 1, scale: 1 }: { opacity: 0, scale: 0.5 }}
           transition={{ delay: 0.7, duration: 0.7 }}
         >
           <motion.span
