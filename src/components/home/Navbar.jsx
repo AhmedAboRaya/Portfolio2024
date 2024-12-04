@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
 function Navbar() {
@@ -7,7 +7,7 @@ function Navbar() {
   const [showFixedNavbar, setShowFixedNavbar] = useState(false);
 
   const navItem =
-    "text-white text-md xl:text-lg font-bold hover:text-[#8287f5] duration-500 tracking-wider xl:tracking-widest";
+    "text-white text-md xl:text-lg font-bold hover:text-[#8287f5] duration-500 tracking-wider xl:tracking-widest borderBottom";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,28 +30,24 @@ function Navbar() {
     if (homeSection) {
       homeSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToAbout = () => {
     const productsSection = document.getElementById("about");
     if (productsSection) {
       productsSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToProjects = () => {
     const aboutSection = document.getElementById("projects");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
 
   return (
@@ -66,9 +62,9 @@ function Navbar() {
           {/* Mobile Navbar */}
           <ul className="md:hidden p-2 flex justify-between w-full px-6">
             <li className="w-14" onClick={scrollToHome}>
-              <Link to="/">
+              <NavLink to="/">
                 <img src="/logo.png" alt="Logo" />
-              </Link>
+              </NavLink>
             </li>
             <li className="z-20" onClick={() => {setIsOpen(!isOpen)}}>
               <Divide />
@@ -82,47 +78,43 @@ function Navbar() {
             } duration-300 md:hidden`}
           >
             <ul className="flex flex-col items-center justify-center h-full">
-              <li className="py-4">
-                <Link
+              <li className="py-4" onClick={scrollToHome}>
+                <NavLink
                   className={`${navItem} `}
-                  to="/"
                   onClick={() => {setIsOpen(!isOpen);  onClick={scrollToHome}}}
                 >
                   HOME
-                </Link>
+                </NavLink>
               </li>
-              <li className="py-4">
-                <Link
+              <li className="py-4" onClick={() => {setIsOpen(!isOpen);  onClick={scrollToAbout}}}>
+                <NavLink
                   className={`${navItem}`}
-                  to="/about"
-                  onClick={() => {setIsOpen(!isOpen);  onClick={scrollToAbout}}}
+                  
                 >
                   ABOUT
-                </Link>
+                </NavLink>
               </li>
 
               <li className="py-4 w-10 xl:w-14">
-                <Link to="/" onClick={() => {setIsOpen(!isOpen);  onClick={scrollToHome}}}>
+                <NavLink onClick={() => {setIsOpen(!isOpen);  onClick={scrollToHome}}}>
                   <img src="/logo.png" alt="Logo" />
-                </Link>
+                </NavLink>
               </li>
               <li className="py-4">
-                <Link
+                <NavLink
                   className={`${navItem}`}
-                  to="/projects"
                   onClick={() => {setIsOpen(!isOpen);  onClick={scrollToProjects}}}
                 >
                   PROJECTS
-                </Link>
+                </NavLink>
               </li>
               <li className="py-4">
-                <Link
+                <NavLink
                   className={`${navItem}`}
-                  to="/contact"
                   onClick={() => {setIsOpen(!isOpen);  onClick={scrollToContact}}}
                 >
                   CONTACT
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -132,31 +124,31 @@ function Navbar() {
             className={`pb-4 px-5 w-full text-center justify-between z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
           >
             <li className="mt-4 w-12 xl:w-14" onClick={scrollToHome}>
-              <Link to="/">
+              <NavLink to="/">
                 <img src="/logo.png" alt="Logo" />
-              </Link>
+              </NavLink>
             </li>
             <div className="flex gap-6 m-0 h-full items-center md:space-x-7 xl:space-x-9 2xl:space-x-11">
               <li className="" onClick={scrollToHome}>
-                <Link className={`${navItem} m-0`} to="/">
+                <NavLink className={`${navItem} m-0`} to="/">
                   HOME
-                </Link>
+                </NavLink>
               </li>
               <li onClick={scrollToAbout}>
-                <Link className={`${navItem}`} to="/about">
+                <NavLink className={`${navItem}`} to="/about">
                   ABOUT
-                </Link>
+                </NavLink>
               </li>
 
               <li onClick={scrollToProjects}>
-                <Link className={`${navItem}`} to="/projects">
+                <NavLink className={`${navItem}`} to="/projects">
                   PROJECTS
-                </Link>
+                </NavLink>
               </li>
               <li onClick={scrollToContact}>
-                <Link className={`${navItem}`} to="/contact">
+                <NavLink className={`${navItem}`} to="/contact">
                   CONTACT
-                </Link>
+                </NavLink>
               </li>
             </div>
           </ul>

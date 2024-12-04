@@ -4,7 +4,7 @@ import { Github } from 'lucide-react';
 
 export default function ThreeDCardDemo({key, title, description, link, img}) {
   return (
-    <CardContainer className="inter-var">
+    <CardContainer className="inter-var z-20 relative">
       <CardBody
         className=" relative group/card dark:hover:shadow-2xl dark:hover:shadow-black/[0.3] bg-[#10112fcf] dark:border-white/[0.2] border-black/[0.1] md:min-w-[480px] h-auto rounded-xl p-6 border"
       >

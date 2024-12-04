@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   const scrollToPosition = (target, duration) => {
@@ -17,19 +18,23 @@ const Footer = () => {
     requestAnimationFrame(animateScroll);
   };
 
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    scrollToPosition(0, 1000);
+  const scrollToHome = () => {
+    const homeSection = document.getElementById("home");
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
-  const handleAboutClick = (e) => {
-    e.preventDefault();
-    scrollToPosition(920, 1000);
+  const scrollToAbout = () => {
+    const productsSection = document.getElementById("about");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
-  const handleProjectsClick = (e) => {
-    e.preventDefault();
-    scrollToPosition(1700, 1000);
+  const scrollToProjects = () => {
+    const aboutSection = document.getElementById("projects");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -37,9 +42,9 @@ const Footer = () => {
       <div className="mx-auto flex justify-center md:justify-between px-4 flex-wrap">
         <p className="mb-2">© {new Date().getFullYear()} Ahmed AboRaya. All rights reserved.</p>
         <div>
-          <a href="#" onClick={handleHomeClick} className="text-gray-400 hover:text-white mx-2 duration-500">Home</a>
-          <a href="#" onClick={handleAboutClick} className="text-gray-400 hover:text-white mx-2 duration-500">About</a>
-          <a href="#" onClick={handleProjectsClick} className="text-gray-400 hover:text-white mx-2 duration-500">Projects</a>
+          <NavLink onClick={scrollToHome} className="text-gray-400 hover:text-white mx-2 duration-500">Home</NavLink>
+          <NavLink onClick={scrollToAbout} className="text-gray-400 hover:text-white mx-2 duration-500">About</NavLink>
+          <NavLink onClick={scrollToProjects} className="text-gray-400 hover:text-white mx-2 duration-500">Projects</NavLink>
         </div>
       </div>
     </footer>

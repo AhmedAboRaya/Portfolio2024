@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
 
 function Navbar({ showNavbar }) {
@@ -10,42 +10,38 @@ function Navbar({ showNavbar }) {
     if (homeSection) {
       homeSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToAbout = () => {
     const productsSection = document.getElementById("about");
     if (productsSection) {
       productsSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToProjects = () => {
     const aboutSection = document.getElementById("projects");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
-    if(!isMenuOpen) toggleMenu();
   };
 
 
   const navItem =
-    "text-white text-md xl:text-lg font-bold hover:text-[#8287f5] duration-500 tracking-wider xl:tracking-widest ";
+    "text-white text-md xl:text-lg font-bold hover:text-[#8287f5] duration-500 tracking-wider xl:tracking-widest borderBottom ";
 
   return (
     <>
       {/* Mobile Navbar */}
       <ul className="md:hidden mt-4 flex justify-between w-full px-6">
         <li className="w-14">
-          <Link to="/" onClick={scrollToHome}>
+          <NavLink to="/" onClick={scrollToHome}>
             <img src="/logo.png" alt="Logo" className="w-12 z-[100] relative"/>
-          </Link>
+          </NavLink>
         </li>
         <li className="z-20" onClick={() => setIsOpen(!isOpen)}>
           <Divide />
