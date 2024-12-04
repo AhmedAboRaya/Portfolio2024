@@ -76,10 +76,6 @@ canvas {
   animation: fade-in ease-in-out 4.8s forwards;
 }
 
-.active{
-  color: #ec10ec;
-}
-
 .text-home:first-child{
   font-size: 40px;
   letter-spacing: 10px;
@@ -130,3 +126,6 @@ canvas {
   width: 25px;
   height: 25px;
 }
+
+
+

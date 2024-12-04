@@ -10,7 +10,7 @@ import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 function Home() {
   const [fullstackText, setFullstackText] = useState("");
   const [showNavbar, setShowNavbar] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false); // State for back to top button
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const targetText = "FULLSTACK DEVELOPER";
   const typingSpeed = 200; 
 
@@ -19,7 +19,7 @@ function Home() {
     let typingTimeout; 
 
     const typeLetter = () => {
-      if (currentIndex < targetText.length) {  
+      if (currentIndex + 1 < targetText.length) {  
         setFullstackText((prev) => prev + targetText[currentIndex]);
         currentIndex++;
         typingTimeout = setTimeout(typeLetter, typingSpeed); 
@@ -80,7 +80,7 @@ function Home() {
   };
 
   return (
-    <div className="App relative w-full h-screen z-20">
+    <div className="App relative w-full h-screen z-20" id="home">
       <Robot />
       <div className="mask"></div>
       <div className={`absolute top-0 left-0 text-white w-full flex md:justify-center`}>
@@ -93,7 +93,7 @@ function Home() {
           <div className="text-[#220a3d] font-bold">{fullstackText}</div>
         </div>
       </div>
-      <div>
+      <div className="hidden md:block ">
         <Location />
       </div>
       <a className="hero-mouse anchor" onClick={handleScroll}>

@@ -55,7 +55,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative z-10 min-h-screen flex items-center justify-center p-6">
+    <div className="relative z-10 min-h-screen flex items-center justify-center p-6" id="contact">
       <div className="flex flex-col md:flex-row w-full  max-w-4xl shadow-lg rounded-lg overflow-hidden">
         {/* Left Section: Contact Info */}
         <div className="w-full lg:w-1/2 bg-[#121329] items-center justify-center text-gray-300 p-8 flex flex-col">

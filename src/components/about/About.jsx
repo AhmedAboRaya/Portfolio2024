@@ -30,7 +30,7 @@ const About = () => {
             ABOUT
           </motion.h1>
           <motion.p 
-            className="text-sm 1020:text-md xl:text-lg leading-10 text-justify text-white"
+            className="text-sm 1020:text-md xl:text-lg leading-10 text-justify text-[#b6cded]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}

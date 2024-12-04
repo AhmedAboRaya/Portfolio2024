@@ -5,16 +5,46 @@ import { Divide } from "hamburger-react";
 function Navbar({ showNavbar }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToHome = () => {
+    const homeSection = document.getElementById("home");
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: "smooth" });
+    }
+    if(!isMenuOpen) toggleMenu();
+  };
+  const scrollToAbout = () => {
+    const productsSection = document.getElementById("about");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
+    if(!isMenuOpen) toggleMenu();
+  };
+  const scrollToProjects = () => {
+    const aboutSection = document.getElementById("projects");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+    if(!isMenuOpen) toggleMenu();
+  };
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+    if(!isMenuOpen) toggleMenu();
+  };
+
+
   const navItem =
-    "text-white text-md xl:text-lg font-bold hover:text-[#55578b] duration-500 tracking-wider xl:tracking-widest ";
+    "text-white text-md xl:text-lg font-bold hover:text-[#8287f5] duration-500 tracking-wider xl:tracking-widest ";
 
   return (
     <>
       {/* Mobile Navbar */}
       <ul className="md:hidden mt-4 flex justify-between w-full px-6">
         <li className="w-14">
-          <Link to="/">
-            <img src="/logo.png" alt="Logo" />
+          <Link to="/" onClick={scrollToHome}>
+            <img src="/logo.png" alt="Logo" className="w-12 z-[100] relative"/>
           </Link>
         </li>
         <li className="z-20" onClick={() => setIsOpen(!isOpen)}>
@@ -33,7 +63,7 @@ function Navbar({ showNavbar }) {
             <NavLink
               className={`${navItem}`}
               to="/"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {setIsOpen(false);  onClick={scrollToHome}}}
             >
               HOME
             </NavLink>
@@ -42,13 +72,13 @@ function Navbar({ showNavbar }) {
             <NavLink
               className={`${navItem}`}
               to="/about"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {setIsOpen(false);  onClick={scrollToAbout}}}
             >
               ABOUT
             </NavLink>
           </li>
           <li className="py-4 w-10 xl:w-14">
-            <NavLink to="/" onClick={() => setIsOpen(false)}>
+            <NavLink to="/" onClick={() => {setIsOpen(false);  onClick={scrollToHome}}}>
               <img src="/logo.png" alt="Logo" />
             </NavLink>
           </li>
@@ -56,7 +86,7 @@ function Navbar({ showNavbar }) {
             <NavLink
               className={`${navItem}`}
               to="/projects"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {setIsOpen(false);  onClick={scrollToProjects}}}
             >
               PROJECTS
             </NavLink>
@@ -65,7 +95,7 @@ function Navbar({ showNavbar }) {
             <NavLink
               className={`${navItem}`}
               to="/contact"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {setIsOpen(false);  onClick={scrollToContact}}}
             >
               CONTACT
             </NavLink>
@@ -75,32 +105,32 @@ function Navbar({ showNavbar }) {
 
       {/* Computer Navbar */}
       <div className="hidden md:flex flex-row items-center w-full justify-between px-5">
-        <div className="w-10 xl:w-14">
+        <div className="w-12 xl:w-14">
           <NavLink to="/">
             <img src="/logo.png" alt="Logo" />
           </NavLink>
         </div>
         <div>
           <ul
-            className={`fade-in w-full pb-4  text-center px-5 pt-2 z-50 fade-in items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
+            className={`fade-in w-full pb-4  text-center px-5 pt-2 z-50 items-center space-y-7 md:space-x-7 xl:space-x-9 2xl:space-x-11 duration-500 hidden md:flex`}
           >
             <li></li>
-            <li className="mt-0">
+            <li className="mt-0" onClick={scrollToHome}>
               <NavLink className={`${navItem} m-0`} to="/">
                 HOME
               </NavLink>
             </li>
-            <li>
+            <li onClick={scrollToAbout}>
               <NavLink className={`${navItem}`} to="/about">
                 ABOUT
               </NavLink>
             </li>
-            <li>
+            <li onClick={scrollToProjects}>
               <NavLink className={`${navItem}`} to="/projects">
                 PROJECTS
               </NavLink>
             </li>
-            <li>
+            <li onClick={scrollToContact}>
               <NavLink className={`${navItem}`} to="/contact">
                 CONTACT
               </NavLink>
