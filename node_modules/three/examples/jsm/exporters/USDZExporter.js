@@ -1,25 +1,44 @@
 import {
-  NoColorSpace,
-  DoubleSide,
+	NoColorSpace,
+	DoubleSide,
+	Color,
 } from 'three';
 
 import {
-  strToU8,
-  zipSync,
+	strToU8,
+	zipSync,
 } from '../libs/fflate.module.js';
-
-import { decompress } from './../utils/TextureUtils.js';
 
 class USDZExporter {
 
-	async parse( scene, options = {} ) {
+	constructor() {
+
+		this.textureUtils = null;
+
+	}
+
+	setTextureUtils( utils ) {
+
+		this.textureUtils = utils;
+
+	}
+
+	parse( scene, onDone, onError, options ) {
+
+		this.parseAsync( scene, options ).then( onDone ).catch( onError );
+
+	}
+
+	async parseAsync( scene, options = {} ) {
 
 		options = Object.assign( {
 			ar: {
 				anchoring: { type: 'plane' },
 				planeAnchoring: { alignment: 'horizontal' }
 			},
+			includeAnchoringProperties: true,
 			quickLookCompatible: false,
+			maxTextureSize: 1024,
 		}, options );
 
 		const files = {};
@@ -89,11 +108,19 @@ class USDZExporter {
 
 			if ( texture.isCompressedTexture === true ) {
 
-				texture = decompress( texture );
+				if ( this.textureUtils === null ) {
+
+					throw new Error( 'THREE.USDZExporter: setTextureUtils() must be called to process compressed textures.' );
+
+				} else {
+
+					texture = await this.textureUtils.decompress( texture );
+
+				}
 
 			}
 
-			const canvas = imageToCanvas( texture.image, texture.flipY );
+			const canvas = imageToCanvas( texture.image, texture.flipY, options.maxTextureSize );
 			const blob = await new Promise( resolve => canvas.toBlob( resolve, 'image/png', 1 ) );
 
 			files[ `textures/Texture_${ id }.png` ] = new Uint8Array( await blob.arrayBuffer() );
@@ -133,14 +160,14 @@ class USDZExporter {
 
 }
 
-function imageToCanvas( image, flipY ) {
+function imageToCanvas( image, flipY, maxTextureSize ) {
 
 	if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
 		( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
 		( typeof OffscreenCanvas !== 'undefined' && image instanceof OffscreenCanvas ) ||
 		( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ) {
 
-		const scale = 1024 / Math.max( image.width, image.height );
+		const scale = maxTextureSize / Math.max( image.width, image.height );
 
 		const canvas = document.createElement( 'canvas' );
 		canvas.width = image.width * Math.min( 1, scale );
@@ -191,6 +218,10 @@ function buildHeader() {
 
 function buildSceneStart( options ) {
 
+	const alignment = options.includeAnchoringProperties === true ? `
+		token preliminary:anchoring:type = "${options.ar.anchoring.type}"
+		token preliminary:planeAnchoring:alignment = "${options.ar.planeAnchoring.alignment}"
+	` : '';
 	return `def Xform "Root"
 {
 	def Scope "Scenes" (
@@ -204,10 +235,7 @@ function buildSceneStart( options ) {
 			}
 			sceneName = "Scene"
 		)
-		{
-		token preliminary:anchoring:type = "${options.ar.anchoring.type}"
-		token preliminary:planeAnchoring:alignment = "${options.ar.planeAnchoring.alignment}"
-
+		{${alignment}
 `;
 
 }
@@ -408,6 +436,21 @@ function buildPrimvars( attributes ) {
 
 	}
 
+	// vertex colors
+
+	const colorAttribute = attributes.color;
+
+	if ( colorAttribute !== undefined ) {
+
+		const count = colorAttribute.count;
+
+		string += `
+	color3f[] primvars:displayColor = [${buildVector3Array( colorAttribute, count )}] (
+		interpolation = "vertex"
+		)`;
+
+	}
+
 	return string;
 
 }
@@ -560,7 +603,7 @@ function buildMaterial( material, textures, quickLookCompatible = false ) {
 
 		inputs.push( `${ pad }color3f inputs:emissiveColor.connect = </Materials/Material_${ material.id }/Texture_${ material.emissiveMap.id }_emissive.outputs:rgb>` );
 
-		samplers.push( buildTexture( material.emissiveMap, 'emissive' ) );
+		samplers.push( buildTexture( material.emissiveMap, 'emissive', new Color( material.emissive.r * material.emissiveIntensity, material.emissive.g * material.emissiveIntensity, material.emissive.b * material.emissiveIntensity ) ) );
 
 	} else if ( material.emissive.getHex() > 0 ) {
 
@@ -580,15 +623,15 @@ function buildMaterial( material, textures, quickLookCompatible = false ) {
 
 		inputs.push( `${ pad }float inputs:occlusion.connect = </Materials/Material_${ material.id }/Texture_${ material.aoMap.id }_occlusion.outputs:r>` );
 
-		samplers.push( buildTexture( material.aoMap, 'occlusion' ) );
+		samplers.push( buildTexture( material.aoMap, 'occlusion', new Color( material.aoMapIntensity, material.aoMapIntensity, material.aoMapIntensity ) ) );
 
 	}
 
-	if ( material.roughnessMap !== null && material.roughness === 1 ) {
+	if ( material.roughnessMap !== null ) {
 
 		inputs.push( `${ pad }float inputs:roughness.connect = </Materials/Material_${ material.id }/Texture_${ material.roughnessMap.id }_roughness.outputs:g>` );
 
-		samplers.push( buildTexture( material.roughnessMap, 'roughness' ) );
+		samplers.push( buildTexture( material.roughnessMap, 'roughness', new Color( material.roughness, material.roughness, material.roughness ) ) );
 
 	} else {
 
@@ -596,11 +639,11 @@ function buildMaterial( material, textures, quickLookCompatible = false ) {
 
 	}
 
-	if ( material.metalnessMap !== null && material.metalness === 1 ) {
+	if ( material.metalnessMap !== null ) {
 
 		inputs.push( `${ pad }float inputs:metallic.connect = </Materials/Material_${ material.id }/Texture_${ material.metalnessMap.id }_metallic.outputs:b>` );
 
-		samplers.push( buildTexture( material.metalnessMap, 'metallic' ) );
+		samplers.push( buildTexture( material.metalnessMap, 'metallic', new Color( material.metalness, material.metalness, material.metalness ) ) );
 
 	} else {
 
@@ -623,8 +666,28 @@ function buildMaterial( material, textures, quickLookCompatible = false ) {
 
 	if ( material.isMeshPhysicalMaterial ) {
 
-		inputs.push( `${ pad }float inputs:clearcoat = ${ material.clearcoat }` );
-		inputs.push( `${ pad }float inputs:clearcoatRoughness = ${ material.clearcoatRoughness }` );
+		if ( material.clearcoatMap !== null ) {
+
+			inputs.push( `${pad}float inputs:clearcoat.connect = </Materials/Material_${material.id}/Texture_${material.clearcoatMap.id}_clearcoat.outputs:r>` );
+			samplers.push( buildTexture( material.clearcoatMap, 'clearcoat', new Color( material.clearcoat, material.clearcoat, material.clearcoat ) ) );
+
+		} else {
+
+			inputs.push( `${pad}float inputs:clearcoat = ${material.clearcoat}` );
+
+		}
+
+		if ( material.clearcoatRoughnessMap !== null ) {
+
+			inputs.push( `${pad}float inputs:clearcoatRoughness.connect = </Materials/Material_${material.id}/Texture_${material.clearcoatRoughnessMap.id}_clearcoatRoughness.outputs:g>` );
+			samplers.push( buildTexture( material.clearcoatRoughnessMap, 'clearcoatRoughness', new Color( material.clearcoatRoughness, material.clearcoatRoughness, material.clearcoatRoughness ) ) );
+
+		} else {
+
+			inputs.push( `${pad}float inputs:clearcoatRoughness = ${material.clearcoatRoughness}` );
+
+		}
+
 		inputs.push( `${ pad }float inputs:ior = ${ material.ior }` );
 
 	}
