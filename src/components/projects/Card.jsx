@@ -2,7 +2,7 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import { Github } from 'lucide-react';
 
-export default function ThreeDCardDemo({key, title, description, link, img}) {
+export default function ThreeDCardDemo({key, title, description, link, img, tryLink}) {
   return (
     <CardContainer className="inter-var z-20 relative">
       <CardBody
@@ -38,7 +38,11 @@ export default function ThreeDCardDemo({key, title, description, link, img}) {
             target="_blank" 
             className="px-4 py-2 rounded-xl text-xs font-normal text-white"
           >
+            {tryLink && (<a target="_blank" href={tryLink} className="text-white text-[1rem]">
             Try now →
+            </a>)}
+            
+            
           </CardItem>
           <CardItem
             translateZ={20}

@@ -4,18 +4,33 @@ import Card from "./Card";
 
 const projects = [
     {
-        title: "MedReserve",
-        description: "Manage medical appointments and prescriptions.",
-        link: "https://github.com/AhmedAboRaya/MedReserve.git",
-        img: "/MedRev.png",
+        title: "Manasety",
+        description: "Teachers upload lessons; students watch.",
+        link: "https://github.com/AhmedAboRaya/Educational-platform",
+        tryLink: "https://manasty-phi.vercel.app/",
+        img: "/Manasety.png",
+    },
+    {
+        title: "Egy-Rack",
+        description: "Showcasing import and export products.",
+        link: "https://github.com/AhmedAboRaya/Egy-Rack",
+        tryLink: "https://egy-rack.vercel.app/",
+        img: "/EgyRack.png",
     },
     {
         title: "TaskTracker",
         description: "A tool for organizing tasks and managing projects.",
         link: "https://github.com/abdelrahman-elkhateeb/taskTrackr.git",
-        img: "/taskTracker.png",
+        tryLink: "https://depi-final-project-m1eh.vercel.app/",
+        img: "/taskTracker2 (2).png",
     },
+    
     {
+        title: "MedReserve",
+        description: "Manage medical appointments and prescriptions.",
+        link: "https://github.com/AhmedAboRaya/MedReserve.git",
+        img: "/MedRev.png",
+    },{
         title: "Shopping Website",
         description: "An e-commerce platform with a user dashboard.",
         link: "https://github.com/AhmedAboRaya/E-Commerce.git",
@@ -46,6 +61,7 @@ const Projects = () => {
                             title={project.title}
                             description={project.description}
                             link={project.link}
+                            tryLink={project.tryLink}
                             img={project.img}
                         />
                     </motion.div>

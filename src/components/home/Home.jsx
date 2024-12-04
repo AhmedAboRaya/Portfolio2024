@@ -79,6 +79,31 @@ function Home() {
     scrollToPosition(920, 2000); 
   };
 
+  const scrollToAbout = () => {
+    const productsSection = document.getElementById("about");
+    if (productsSection) {
+      const targetPosition = productsSection.offsetTop;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; 
+      let startTime = null;
+  
+      const scrollAnimation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1); 
+        window.scrollTo(0, startPosition + distance * progress);
+  
+        if (timeElapsed < duration) {
+          requestAnimationFrame(scrollAnimation);
+        }
+      };
+  
+      // Start the animation
+      requestAnimationFrame(scrollAnimation);
+    }
+  };
+
   return (
     <div className="App relative w-full h-screen z-20" id="home">
       <Robot />
@@ -96,7 +121,7 @@ function Home() {
       <div className="hidden md:block ">
         <Location />
       </div>
-      <a className="hero-mouse anchor" onClick={handleScroll}>
+      <a className="hero-mouse anchor" onClick={scrollToAbout}>
         <div className="mouse-icon">
           <span></span>
         </div>
