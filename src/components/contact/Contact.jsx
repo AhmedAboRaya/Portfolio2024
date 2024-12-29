@@ -70,7 +70,7 @@ const Contact = () => {
             </li>
             <li className="flex items-center text-sm md:text-[16px]">
               <Phone className="text-white mr-3" />
-              <strong>Phone:&nbsp;</strong> +0201153782020
+              <strong>Phone:&nbsp;</strong> +201153782020
             </li>
             <li className="flex items-center ">
               <Mail className="text-white mr-3" />
