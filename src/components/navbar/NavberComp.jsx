@@ -59,7 +59,7 @@ function Navbar() {
             className={`md:hidden mt-4 flex justify-between w-full px-6 z-[1001] transition-all duration-300`}
           >
             <li className="w-14">
-              <NavLink to="/" onClick={scrollToHome}>
+              <NavLink onClick={scrollToHome}>
                 <img
                   src="/logo.png"
                   alt="Logo"
@@ -75,14 +75,13 @@ function Navbar() {
           {/* Mobile Menu */}
           <div
             className={`${
-              isOpen ?  "translate-x-0" : "translate-x-full"
+              isOpen ? "translate-x-0" : "translate-x-full"
             } fixed inset-0 bg-[#121329c7] bg-opacity-80 transition-transform transform z-[1000] header md:hidden duration-500`}
           >
             <ul className="flex flex-col items-center justify-center h-full">
               <li className="py-4">
                 <NavLink
                   className={navItem}
-                  to="/"
                   onClick={() => {
                     setIsOpen(false);
                     scrollToHome();
@@ -94,7 +93,6 @@ function Navbar() {
               <li className="py-4">
                 <NavLink
                   className={navItem}
-                  to="/about"
                   onClick={() => {
                     setIsOpen(false);
                     scrollToAbout();
@@ -105,7 +103,6 @@ function Navbar() {
               </li>
               <li className="py-4 w-10 xl:w-14">
                 <NavLink
-                  to="/"
                   onClick={() => {
                     setIsOpen(false);
                     scrollToHome();
@@ -117,7 +114,6 @@ function Navbar() {
               <li className="py-4">
                 <NavLink
                   className={navItem}
-                  to="/projects"
                   onClick={() => {
                     setIsOpen(false);
                     scrollToProjects();
@@ -133,7 +129,7 @@ function Navbar() {
                   scrollToContact();
                 }}
               >
-                <NavLink className={navItem} to="/contact">
+                <NavLink className={navItem}>
                   CONTACT
                 </NavLink>
               </li>
@@ -145,29 +141,30 @@ function Navbar() {
             className={`hidden md:flex flex-row items-center w-full justify-between px-5 transition-all duration-300`}
           >
             <div className="w-12 xl:w-14">
-              <NavLink to="/">
+              <NavLink>
                 <img src="/logo.png" alt="Logo" />
               </NavLink>
             </div>
             <div>
-              <ul className="fade-in w-full pb-4 text-center px-5 pt-2 z-50 items-center space-y-7 md:space-x-7 xl:space-x-9 2xl:space-x-11 duration-500 hidden md:flex">
-                <li className="mt-0" onClick={scrollToHome}>
-                  <NavLink className={navItem} to="/">
+              <ul className=" w-full pb-4 text-center px-5 pt-2 z-50 items-center space-y-7 md:space-x-7 xl:space-x-9 2xl:space-x-11 duration-500 hidden md:flex">
+                <li></li>
+                <li onClick={scrollToHome}>
+                  <NavLink className={navItem}>
                     HOME
                   </NavLink>
                 </li>
                 <li onClick={scrollToAbout}>
-                  <NavLink className={navItem} to="/about">
+                  <NavLink className={navItem}>
                     ABOUT
                   </NavLink>
                 </li>
                 <li onClick={scrollToProjects}>
-                  <NavLink className={navItem} to="/projects">
+                  <NavLink className={navItem}>
                     PROJECTS
                   </NavLink>
                 </li>
                 <li onClick={scrollToContact}>
-                  <NavLink className={navItem} to="/contact">
+                  <NavLink className={navItem}>
                     CONTACT
                   </NavLink>
                 </li>

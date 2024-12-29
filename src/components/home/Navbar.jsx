@@ -63,7 +63,7 @@ function Navbar() {
           {/* Mobile Navbar */}
           <ul className="md:hidden p-2 flex justify-between w-full px-6">
             <li className="w-14" onClick={scrollToHome}>
-              <NavLink to="/">
+              <NavLink>
                 <img src="/logo.png" alt="Logo" />
               </NavLink>
             </li>
@@ -145,29 +145,30 @@ function Navbar() {
             className={`header pb-4 px-5 w-full text-center justify-between z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
           >
             <li className="mt-4 w-12 xl:w-14" onClick={scrollToHome}>
-              <NavLink to="/">
+              <NavLink>
                 <img src="/logo.png" alt="Logo" />
               </NavLink>
             </li>
             <div className="flex gap-6 m-0 h-full items-center md:space-x-7 xl:space-x-9 2xl:space-x-11">
+
               <li className="" onClick={scrollToHome}>
-                <NavLink className={`${navItem} m-0`} to="/">
+                <NavLink className={`${navItem} m-0`}>
                   HOME
                 </NavLink>
               </li>
               <li onClick={scrollToAbout}>
-                <NavLink className={`${navItem}`} to="/about">
+                <NavLink className={`${navItem}`}>
                   ABOUT
                 </NavLink>
               </li>
 
               <li onClick={scrollToProjects}>
-                <NavLink className={`${navItem}`} to="/projects">
+                <NavLink className={`${navItem}`}>
                   PROJECTS
                 </NavLink>
               </li>
               <li onClick={scrollToContact}>
-                <NavLink className={`${navItem}`} to="/contact">
+                <NavLink className={`${navItem}`}>
                   CONTACT
                 </NavLink>
               </li>
