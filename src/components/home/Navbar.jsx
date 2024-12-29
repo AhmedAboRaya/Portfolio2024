@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
-import "../../styles.css"
+import "../../styles.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +67,12 @@ function Navbar() {
                 <img src="/logo.png" alt="Logo" />
               </NavLink>
             </li>
-            <li className="z-20" onClick={() => {setIsOpen(!isOpen)}}>
+            <li
+              className="z-20"
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            >
               <Divide />
             </li>
           </ul>
@@ -82,29 +87,41 @@ function Navbar() {
               <li className="py-4" onClick={scrollToHome}>
                 <NavLink
                   className={`${navItem} `}
-                  onClick={() => {setIsOpen(!isOpen);  onClick={scrollToHome}}}
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    scrollToHome();
+                  }}
                 >
                   HOME
                 </NavLink>
               </li>
-              <li className="py-4" onClick={() => {setIsOpen(!isOpen);  onClick={scrollToAbout}}}>
-                <NavLink
-                  className={`${navItem}`}
-                  
-                >
-                  ABOUT
-                </NavLink>
+              <li
+                className="py-4"
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  scrollToAbout();
+                }}
+              >
+                <NavLink className={`${navItem}`}>ABOUT</NavLink>
               </li>
 
               <li className="py-4 w-10 xl:w-14">
-                <NavLink onClick={() => {setIsOpen(!isOpen);  onClick={scrollToHome}}}>
+                <NavLink
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    scrollToHome();
+                  }}
+                >
                   <img src="/logo.png" alt="Logo" />
                 </NavLink>
               </li>
               <li className="py-4">
                 <NavLink
                   className={`${navItem}`}
-                  onClick={() => {setIsOpen(!isOpen);  onClick={scrollToProjects}}}
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    scrollToProjects();
+                  }}
                 >
                   PROJECTS
                 </NavLink>
@@ -112,7 +129,10 @@ function Navbar() {
               <li className="py-4">
                 <NavLink
                   className={`${navItem}`}
-                  onClick={() => {setIsOpen(!isOpen);  onClick={scrollToContact}}}
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    scrollToContact();
+                  }}
                 >
                   CONTACT
                 </NavLink>
