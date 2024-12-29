@@ -4,25 +4,32 @@ import Card from "./Card";
 
 const projects = [
     {
+        title: "Esrark",
+        description: "Teachers upload lessons; students watch.",
+        link: "https://youtu.be/1RxSLtu58G0",
+        tryLink: "https://esrark.vercel.app/",
+        img: "/esrark.png",
+    },
+    {
         title: "Manasety",
         description: "Teachers upload lessons; students watch.",
-        link: "https://github.com/AhmedAboRaya/Educational-platform",
+        link: "https://youtu.be/p5cD14k9Loc",
         tryLink: "https://manasty-phi.vercel.app/",
         img: "/Manasety.png",
     },
     {
         title: "Egy-Rack",
         description: "Showcasing import and export products.",
-        link: "https://github.com/AhmedAboRaya/Egy-Rack",
+        link: "https://youtu.be/ofzGAVZGfEY",
         tryLink: "https://egy-rack.vercel.app/",
         img: "/EgyRack.png",
     },
     {
         title: "TaskTracker",
         description: "A tool for organizing tasks and managing projects.",
-        link: "https://github.com/abdelrahman-elkhateeb/taskTrackr.git",
+        link: "https://youtu.be/GC8Z3Z1Z7-Q",
         tryLink: "https://depi-final-project-m1eh.vercel.app/",
-        img: "/taskTracker2 (2).png",
+        img: "/taskTracker.png",
     },
     
     {
@@ -39,7 +46,7 @@ const projects = [
     {
         title: "VS Code Clone",
         description: "A clone of Visual Studio Code for code editing.",
-        link: "https://github.com/AhmedAboRaya/VS_Clone.git",
+        link: "https://youtu.be/6Vcex4rXHQY",
         img: "/vs_clone.png",
     },
 ];

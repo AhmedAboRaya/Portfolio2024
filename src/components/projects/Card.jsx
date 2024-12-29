@@ -1,6 +1,7 @@
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import { Github } from 'lucide-react';
+import { Youtube } from "lucide-react";
 
 export default function ThreeDCardDemo({key, title, description, link, img, tryLink}) {
   return (
@@ -51,7 +52,7 @@ export default function ThreeDCardDemo({key, title, description, link, img, tryL
             className=" rounded-2xl bg-white text-black text-xs font-bold"
           >
             <a target="_blank" href={link} className="w-full h-full px-4 py-2 flex justify-center items-center gap-1">
-              Code <Github />
+              Watch Demo <Youtube className="text-white fill-red-500" />
             </a>
           </CardItem>
         </div>
