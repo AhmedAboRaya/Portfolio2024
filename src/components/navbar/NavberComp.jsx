@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
+import '../../styles.css'
 
 function Navbar({ showNavbar }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ function Navbar({ showNavbar }) {
   return (
     <>
       {/* Mobile Navbar */}
-      <ul className="md:hidden mt-4 flex justify-between w-full px-6">
+      <ul className="md:hidden mt-4 flex justify-between w-full px-6 z-[1001]">
         <li className="w-14">
           <NavLink to="/" onClick={scrollToHome}>
             <img src="/logo.png" alt="Logo" className="w-12 z-[100] relative"/>
@@ -50,7 +51,7 @@ function Navbar({ showNavbar }) {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-[#121329c7] bg-opacity-80 transition-transform transform z-10 ${
+        className={`fixed inset-0 bg-[#121329c7] bg-opacity-80 transition-transform transform z-[1000] header  ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } duration-300 md:hidden`}
       >
@@ -100,7 +101,7 @@ function Navbar({ showNavbar }) {
       </div>
 
       {/* Computer Navbar */}
-      <div className="hidden md:flex flex-row items-center w-full justify-between px-5">
+      <div className="hidden md:flex flex-row items-center w-full justify-between px-5 ">
         <div className="w-12 xl:w-14">
           <NavLink to="/">
             <img src="/logo.png" alt="Logo" />

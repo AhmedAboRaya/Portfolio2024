@@ -71,7 +71,7 @@ function Location() {
   
 
   return (
-    <div className="before fixed text-sm left-16 md:left-20 xl:left-32 2xl:left-52 top-52 text-gray-300 tracking-widest">
+    <div className="before fixed text-sm left-16 md:left-20 xl:left-32 2xl:left-52 top-52 text-gray-300 tracking-widest z-[100]">
       &lt;&gt;{displayText}&lt;/&gt;
     </div>
 

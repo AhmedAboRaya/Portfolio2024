@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Divide } from "hamburger-react";
+import "../../styles.css"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +52,7 @@ function Navbar() {
   };
 
   return (
-    <>
+    <div className="relative">
       {/* Fixed Navbar after scroll */}
       <div
         className={`fixed top-0 left-0 w-full z-50 bg-[#2C2D4F] border-b-[1px] border-[#ffffffa1] bg-opacity-80 transition-transform duration-500 ${
@@ -77,7 +78,7 @@ function Navbar() {
               isOpen ? "translate-x-0" : "translate-x-full"
             } duration-300 md:hidden`}
           >
-            <ul className="flex flex-col items-center justify-center h-full">
+            <ul className="flex flex-col items-center justify-center h-full header">
               <li className="py-4" onClick={scrollToHome}>
                 <NavLink
                   className={`${navItem} `}
@@ -121,7 +122,7 @@ function Navbar() {
 
           {/* Computer Navbar */}
           <ul
-            className={`pb-4 px-5 w-full text-center justify-between z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
+            className={`header pb-4 px-5 w-full text-center justify-between z-50 items-center space-y-7 md:space-x-11 xl:space-x-14 2xl:space-x-20 duration-500 hidden md:flex`}
           >
             <li className="mt-4 w-12 xl:w-14" onClick={scrollToHome}>
               <NavLink to="/">
@@ -154,7 +155,7 @@ function Navbar() {
           </ul>
         </>
       </div>
-    </>
+    </div>
   );
 }
 

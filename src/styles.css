@@ -47,6 +47,10 @@ svg {
   fill: black;
 }
 
+.header {
+  backdrop-filter: blur(7px);
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -148,3 +152,34 @@ canvas {
 }
 
 
+.text-stroke-white {
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.295); 
+  text-stroke: 2px white; 
+}
+
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse linear infinite;
+}

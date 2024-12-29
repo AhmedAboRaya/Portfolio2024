@@ -87,7 +87,7 @@ export const TextRevealCard = ({ text, revealText, children, className }) => {
 
           <div className=" overflow-hidden flex justify-center w-full [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
             <p className="text-base sm:text-[8rem] text-home text-center text-white py-10 font-bold bg-clip-text text-transparent bg-[#53107267]">
-              {text}
+              Ahmed <br className="flex md:hidden" />Abo-Raya
             </p>
             <MemoizedStars />
           </div>

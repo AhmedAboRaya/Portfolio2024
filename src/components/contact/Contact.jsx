@@ -66,7 +66,7 @@ const Contact = () => {
           <ul className="space-y-4">
             <li className="flex items-center text-sm md:text-[16px]">
               <MapPin className="text-white mr-3" />
-              <strong>Address:&nbsp;</strong> 1234 Example St, City, Country
+              <strong>Address:&nbsp;</strong> Elzaytoon, Cairo, Egypt
             </li>
             <li className="flex items-center text-sm md:text-[16px]">
               <Phone className="text-white mr-3" />

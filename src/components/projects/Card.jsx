@@ -6,7 +6,7 @@ export default function ThreeDCardDemo({key, title, description, link, img, tryL
   return (
     <CardContainer className="inter-var z-20 relative">
       <CardBody
-        className=" relative group/card dark:hover:shadow-2xl dark:hover:shadow-black/[0.3] bg-[#10112fcf] dark:border-white/[0.2] border-black/[0.1] md:min-w-[480px] h-auto rounded-xl p-6 border"
+        className=" relative group/card dark:hover:shadow-2xl dark:hover:shadow-black/[0.3] bg-[#10112fcf] dark:border-white/[0.2] border-black/[0.1] md:min-w-[440px] h-auto rounded-xl p-6 border"
       >
         <CardItem
           translateZ="50"

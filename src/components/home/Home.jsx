@@ -8,7 +8,7 @@ import "./scrollButton.css";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-
+import '../../styles.css'
 function Home() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -90,9 +90,9 @@ function Home() {
             initial={{ opacity: 0, x: -100 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
             transition={{ duration: 1, delay: 2 }}
-            className="text-[#220a3d] font-bold"
+            className="text-[#220a3d] font-bold text-3xl md:text-4xl text-stroke-white"
           >
-            FULLSTACK DEVELOPER
+            FULLSTACK ENGINEER
           </motion.div>
         </div>
       </div>
