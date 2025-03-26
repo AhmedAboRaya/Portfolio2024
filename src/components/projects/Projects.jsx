@@ -13,7 +13,7 @@ const projects = [
     {
         title: "Esrark",
         description: "Teachers upload lessons; students watch.",
-        link: "https://youtu.be/1RxSLtu58G0",
+        link: "https://youtu.be/cfdE0iwIJAE",
         tryLink: "https://esrark.vercel.app/",
         img: "/esrark.png",
     },
