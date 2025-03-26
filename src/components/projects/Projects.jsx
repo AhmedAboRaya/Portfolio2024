@@ -4,6 +4,13 @@ import Card from "./Card";
 
 const projects = [
     {
+        title: "Waqar",
+        description: "An e-commerce platform in Saudi Arabia.",
+        // link: "https://youtu.be/1RxSLtu58G0",
+        tryLink: "https://waqar-shemagh.vercel.app/",
+        img: "/waqar.png",
+    },
+    {
         title: "Esrark",
         description: "Teachers upload lessons; students watch.",
         link: "https://youtu.be/1RxSLtu58G0",
@@ -37,18 +44,19 @@ const projects = [
         description: "Manage medical appointments and prescriptions.",
         link: "https://github.com/AhmedAboRaya/MedReserve.git",
         img: "/MedRev.png",
-    },{
-        title: "Shopping Website",
-        description: "An e-commerce platform with a user dashboard.",
-        link: "https://github.com/AhmedAboRaya/E-Commerce.git",
-        img: "/Shopping.png",
     },
-    {
-        title: "VS Code Clone",
-        description: "A clone of Visual Studio Code for code editing.",
-        link: "https://youtu.be/6Vcex4rXHQY",
-        img: "/vs_clone.png",
-    },
+    // {
+    //     title: "Shopping Website",
+    //     description: "An e-commerce platform with a user dashboard.",
+    //     link: "https://github.com/AhmedAboRaya/E-Commerce.git",
+    //     img: "/Shopping.png",
+    // },
+    // {
+    //     title: "VS Code Clone",
+    //     description: "A clone of Visual Studio Code for code editing.",
+    //     link: "https://youtu.be/6Vcex4rXHQY",
+    //     img: "/vs_clone.png",
+    // },
 ];
 
 
